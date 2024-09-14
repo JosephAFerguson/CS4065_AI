@@ -1,5 +1,7 @@
 import Searches
+import time
 
+#Demonstration functions
 def test_BFS():
     print('Starting demonstration for Breadth-First Search with all nodes. Destination: Bucharest')
     for i in range(20):
@@ -33,9 +35,33 @@ while cont:
             test_G()
         else:
             test_A()
-    else:
+    dem = str(input('Would you like to see the performance test? Enter Y for Yes or N for No:'))
+    if dem=='Y':
         print('Demonstration rejected. Running performance tests . . .\n')
-        print('No performance tests made yet.\n')
+        start = time.time()
+        for i in range(100):
+            Searches.timedBRS(i%20+1, 'Bucharest')
+        end = time.time()
+        print(f'The time taken to run Breadth-First search for all 20 nodes, 5 times (100 searches in total) is {(end-start)*1000} ms.\n')
+
+        start = time.time()
+        for i in range(100):
+            Searches.timedDFS(i%20+1, 'Bucharest')
+        end = time.time()
+        print(f'The time taken to run Depth-First search for all 20 nodes, 5 times (100 searches in total) is {(end-start)*1000} ms.\n')
+
+        start = time.time()
+        for i in range(100):
+            Searches.timedGreedy(i%20+1, 'Bucharest')
+        end = time.time()
+        print(f'The time taken to run Greedy search for all 20 nodes, 5 times (100 searches in total) is {(end-start)*1000} ms.\n')
+
+        start = time.time()
+        for i in range(100):
+            Searches.timedA_Star(i%20+1, 'Bucharest')
+        end = time.time()
+        print(f'The time taken to run A* search for all 20 nodes, 5 times (100 searches in total) is {(end-start)*1000} ms.\n')
+
 
     cont = str(input("Please enter Y to continue or N to stop:"))
     if cont =='N':

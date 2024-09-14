@@ -7,6 +7,9 @@ def BFS(n:int, targetName:str):
         print("Cost:", res.cost)
         print("Path:", [Romanian_Map.NAMES[node - 1] for node in res.path])
 
+def timedBRS(n:int, targetName:str):
+    breadthFirst(State(n), targetName)
+
 def breadthFirst(st: State, targetName: str) -> State:
     # Initialize the frontier as a FIFO queue
     frontier = [State(currNode=st.currNode, cost=st.cost, path=[st.currNode])]
@@ -44,6 +47,9 @@ def DFS(n:int, targetName:str):
     if res.outcome:
         print("Cost:", res.cost)
         print("Path:", [Romanian_Map.NAMES[node - 1] for node in res.path])
+
+def timedDFS(n:int, targetName:str):
+    depthFirst(n, targetName)
 
 #dfs may not work as expected
 def depthFirst(n: int, targetName: str) -> State:
@@ -83,6 +89,9 @@ def greedy(n:int, targetName:str):
     if res.outcome:
         print("Cost:", res.cost)
         print("Path:", [Romanian_Map.NAMES[node - 1] for node in res.path])
+
+def timedGreedy(n:int, targetName:str):
+    lim_greedy(targetName, INF_State(currNode=n, path=[n]), 800)
 
 def lim_greedy(targetName:str, st:INF_State, f_lim:int):
     if Romanian_Map.NAMES[st.currNode - 1] == targetName:
@@ -128,6 +137,9 @@ def lim_greedy(targetName:str, st:INF_State, f_lim:int):
         if result.outcome == 1:
             return result, best.f_cost
 
+def timedA_Star(n:int, targetName:str):
+    lim_A_Star(targetName, INF_State(currNode=n, path=[n]), 800)
+    
 def A_star(n:int, targetName:str):
     res,cost =  lim_A_Star(targetName, INF_State(currNode=n, path=[n]), 800)
     if res.outcome:
