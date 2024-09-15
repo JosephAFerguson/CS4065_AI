@@ -1,6 +1,9 @@
 from States import State, INF_State
 from Romania import Romanian_Map
 
+################################################################################
+# Breadth-First Search
+################################################################################
 def BFS(n:int, targetName:str):
     res = breadthFirst(State(n), targetName)
     if res.outcome:
@@ -42,6 +45,9 @@ def breadthFirst(st: State, targetName: str) -> State:
     st.outcome = 0
     return st
 
+################################################################################
+# Depth-First Search
+################################################################################
 def DFS(n:int, targetName:str):
     res = depthFirst(n, targetName)
     if res.outcome:
@@ -84,6 +90,9 @@ def recurDepthFirst(st: State, targetName: str, limit: int) -> State:
             return State(currNode=st.currNode, cost=st.cost, path=st.path, outcome=0)
         return st
 
+################################################################################
+# Greedy Search
+################################################################################
 def greedy(n:int, targetName:str):
     res,cost =  lim_greedy(targetName, INF_State(currNode=n, path=[n]), 800)
     if res.outcome:
@@ -137,14 +146,17 @@ def lim_greedy(targetName:str, st:INF_State, f_lim:int):
         if result.outcome == 1:
             return result, best.f_cost
 
-def timedA_Star(n:int, targetName:str):
-    lim_A_Star(targetName, INF_State(currNode=n, path=[n]), 800)
-
+################################################################################
+# A* Search
+################################################################################
 def A_star(n:int, targetName:str):
     res,cost =  lim_A_Star(targetName, INF_State(currNode=n, path=[n]), 800)
     if res.outcome:
         print("Cost:", res.cost)
         print("Path:", [Romanian_Map.NAMES[node - 1] for node in res.path])
+
+def timedA_Star(n:int, targetName:str):
+    lim_A_Star(targetName, INF_State(currNode=n, path=[n]), 800)
 
 def lim_A_Star(targetName: str, st: INF_State, f_lim: int):
     if Romanian_Map.NAMES[st.currNode - 1] == targetName:
