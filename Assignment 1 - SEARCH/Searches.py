@@ -22,7 +22,7 @@ def breadthFirst(st: State, targetName: str) -> State:
         current_state = frontier.pop(0)
         current_node = current_state.currNode
 
-        if Romanian_Map.NAMES[current_node-1] == targetName:
+        if Romanian_Map.NAMES[current_node - 1] == targetName:
             current_state.outcome = 1
             return current_state
 
@@ -35,7 +35,7 @@ def breadthFirst(st: State, targetName: str) -> State:
                 new_cost = current_state.cost + path_cost
                 new_st = State(currNode=child_node, cost=new_cost, path=new_path)
 
-                if Romanian_Map.NAMES[child_node-1] == targetName:
+                if Romanian_Map.NAMES[child_node - 1] == targetName:
                     new_st.outcome = 1
                     return new_st
 
@@ -198,10 +198,8 @@ def lim_A_Star(targetName: str, st: INF_State, f_lim: int):
 
         result, best.f_cost = lim_A_Star(targetName, best, min(f_lim, alt))
 
-
         if result.outcome == 0:
             return st, best.f_cost
-
 
         if result.outcome == True:
             return result, best.f_cost

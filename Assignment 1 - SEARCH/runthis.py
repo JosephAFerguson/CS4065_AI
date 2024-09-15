@@ -5,19 +5,19 @@ import time
 def test_BFS():
     print('Starting demonstration for Breadth-First Search with all nodes. Destination: Bucharest')
     for i in range(20):
-        Searches.BFS(i+1, 'Bucharest')
+        Searches.BFS(i + 1, 'Bucharest')
 def test_DFS():
     print('Starting demonstration for Depth-First Search with all nodes. Destination: Bucharest')
     for i in range(20):
-        Searches.DFS(i+1, 'Bucharest')
+        Searches.DFS(i + 1, 'Bucharest')
 def test_G():
     print('Starting demonstration for Greedy Search with all nodes. Destination: Bucharest')
     for i in range(20):
-        Searches.greedy(i+1, 'Bucharest')
+        Searches.greedy(i + 1, 'Bucharest')
 def test_A():
     print('Starting demonstration for A* Search with all nodes. Destination: Bucharest')
     for i in range(20):
-        Searches.A_star(i+1, 'Bucharest')
+        Searches.A_star(i + 1, 'Bucharest')
 
 print('Welcome To This Romanian Map Search Tool\n')
 print('Starting Program...\n')
@@ -46,27 +46,27 @@ while cont:
         print("\nTotal time for each search for all 20 nodes, 5 times (100 total searches):\n")
         start = time.time()
         for i in range(100):
-            Searches.timedBRS(i%20+1, 'Bucharest')
+            Searches.timedBRS(i%20 + 1, 'Bucharest')
         end = time.time()
-        print(f'BFS: {(end-start)*1000:5f} ms.')
+        print(f'BFS: {(end - start) * 1000:5f} ms.')
 
         start = time.time()
         for i in range(100):
-            Searches.timedDFS(i%20+1, 'Bucharest')
+            Searches.timedDFS(i % 20 + 1, 'Bucharest')
         end = time.time()
-        print(f'DFS: {(end-start)*1000:5f} ms.')
+        print(f'DFS: {(end - start) * 1000:5f} ms.')
 
         start = time.time()
         for i in range(100):
-            Searches.timedGreedy(i%20+1, 'Bucharest')
+            Searches.timedGreedy(i % 20 + 1, 'Bucharest')
         end = time.time()
-        print(f'Greedy: {(end-start)*1000:5f} ms.')
+        print(f'Greedy: {(end - start) * 1000:5f} ms.')
 
         start = time.time()
         for i in range(100):
-            Searches.timedA_Star(i%20+1, 'Bucharest')
+            Searches.timedA_Star(i % 20 + 1, 'Bucharest')
         end = time.time()
-        print(f'A*: {(end-start)*1000:5f} ms.')
+        print(f'A*: {(end - start) * 1000:5f} ms.')
     elif perf != 'N' and perf != 'n':
         print("Unexpected reponse")
         continue
