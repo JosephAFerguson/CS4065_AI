@@ -27,7 +27,7 @@ class Romanian_Map:
     # Adjacency matrix
     ADJ_MAT = [
     [[17,118], [16,140],[20,75]],        # Arad [neighbor node, weight/cost of path]
-    [[6,211],[7,90],[14,101],[17,85]],   # Bucharest
+    [[6,211],[7,90],[14,101],[18,85]],   # Bucharest
     [[4,120],[14,138],[15,146]],         # Craiova
     [[3,120], [11,75]],                  # Drobeta
     [[8,86]],                            # Eforie
@@ -41,7 +41,7 @@ class Romanian_Map:
     [[16,151],[20,71]],                  # Oradea
     [[2,101],[3,138],[15,97]],           # Pitesti
     [[3,146],[14,97],[16,80]],           # Rimnicu Vilcea
-    [[1,140],[6,99],[13,151],[16,80]],   # Sibiu
+    [[1,140],[6,99],[13,151],[15,80]],   # Sibiu
     [[1,118],[10,111]],                  # Timisoara
     [[2,85],[8,98],[19,142]],            # Urziceni
     [[9,92],[18,142]],                   # Vaslui
