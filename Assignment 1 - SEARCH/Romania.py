@@ -22,8 +22,28 @@ class Romanian_Map:
              'Vaslui',            # 19
              'Zerind']            # 20
 
-    #SLD to Bucharest
-    INFORMED_Heur = [366,0,160,242,161,176,77,151,226,244,241,234,380,100,193,253,329,80,199,374]
+    # Straight Line Distance (SLD) to Bucharest
+    INFORMED_Heur = [366,  # Arad
+                     0,    # Bucharest
+                     160,  # Craiova
+                     242,  # Drobeta
+                     161,  # Eforie
+                     176,  # Fagaras
+                     77,   # Giurgiu
+                     151,  # Hirsova
+                     226,  # Iasi
+                     244,  # Lugoj
+                     241,  # Mehadia
+                     234,  # Neamt
+                     380,  # Oradea
+                     100,  # Pitesti
+                     193,  # Rimnicu Vilcea
+                     253,  # Sibiu
+                     329,  # Timisoara
+                     80,   # Urziceni
+                     199,  # Vaslui
+                     374]  # Zerind
+
     # Adjacency matrix
     ADJ_MAT = [
     [[17,118], [16,140],[20,75]],        # Arad [neighbor node, weight/cost of path]
