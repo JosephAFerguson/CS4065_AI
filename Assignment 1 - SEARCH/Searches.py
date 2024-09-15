@@ -96,7 +96,7 @@ def recurDepthFirst(st: State, targetName: str, limit: int) -> State:
 def greedy(n:int, targetName:str):
     res,cost =  lim_greedy(targetName, INF_State(currNode=n, path=[n]), 800)
     if res.outcome:
-        print("Cost:", res.cost)
+        print("Cost:", cost)
         print("Path:", [Romanian_Map.NAMES[node - 1] for node in res.path])
 
 def timedGreedy(n:int, targetName:str):
@@ -152,7 +152,7 @@ def lim_greedy(targetName:str, st:INF_State, f_lim:int):
 def A_star(n:int, targetName:str):
     res,cost =  lim_A_Star(targetName, INF_State(currNode=n, path=[n]), 800)
     if res.outcome:
-        print("Cost:", res.cost)
+        print("Cost:", cost)
         print("Path:", [Romanian_Map.NAMES[node - 1] for node in res.path])
 
 def timedA_Star(n:int, targetName:str):
