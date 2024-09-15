@@ -18,7 +18,7 @@ def test_A():
     print('Starting demonstration for A* Search with all nodes. Destination: Bucharest')
     for i in range(20):
         Searches.A_star(i+1, 'Bucharest')
-        
+
 print('Welcome To This Romanian Map Search Tool\n')
 print('Starting Program...\n')
 

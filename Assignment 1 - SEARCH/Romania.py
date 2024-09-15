@@ -3,12 +3,12 @@ class Romanian_Map:
     # Alphabetical list of names
     NAMES = ['Arad', 'Bucharest', 'Craiova', 'Drobeta', 'Eforie', 'Fagaras',
          'Giurgiu', 'Hirsova', 'Iasi', 'Lugoj',
-         'Mehadia', 'Neamt', 'Oradea', 'Pitesti',  'Rimnicu Vilcea', 'Sibiu', 
+         'Mehadia', 'Neamt', 'Oradea', 'Pitesti',  'Rimnicu Vilcea', 'Sibiu',
          'Timisoara', 'Urziceni', 'Vaslui', 'Zerind']
-    #SLD to Bucharest 
+    #SLD to Bucharest
     INFORMED_Heur = [366,0,160,242,161,176,77,151,226,244,241,234,380,100,193,253,329,80,199,374]
     # Adjacency matrix
-    ADJ_MAT = [ 
+    ADJ_MAT = [
     [[17,118], [16,140],[20,75]],   # Arad [node of dest, weight/cost of path]
     [[6,211],[7,90],[14,101],[17,85]],  # Bucharest
     [[4,120],[14,138],[15,146]],   # Craiova
