@@ -57,7 +57,7 @@ def DFS(n:int, targetName:str):
 def timedDFS(n:int, targetName:str):
     depthFirst(n, targetName)
 
-#dfs may not work as expected
+# dfs may not work as expected
 def depthFirst(n: int, targetName: str) -> State:
     return recurDepthFirst(State(currNode=n, path=[n]), targetName, 20)
 

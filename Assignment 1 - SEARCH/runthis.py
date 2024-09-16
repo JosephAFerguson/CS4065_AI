@@ -36,10 +36,10 @@ while cont:
         elif choice==4:
             test_A()
         else:
-            print("Unexpected reponse")
+            print("Unexpected response")
             continue
     elif dem != 'N' and dem != 'n':
-        print("Unexpected reponse")
+        print("Unexpected response")
         continue
     perf = str(input('Would you like to see the performance test? (Y/N):'))
     if perf == 'Y' or perf == 'y':
@@ -68,7 +68,7 @@ while cont:
         end = time.time()
         print(f'A*: {(end - start) * 1000:5f} ms.')
     elif perf != 'N' and perf != 'n':
-        print("Unexpected reponse")
+        print("Unexpected response")
         continue
 
     cont = str(input("Would you like to continue (Y/N):"))
