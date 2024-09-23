@@ -1,7 +1,7 @@
 class Romanian_Map:
-    NODES = [i + 1 for i in range(20)]
-    #         City,              Node Id
-    NAMES = ['Arad',              # 1
+     NODES = [i + 1 for i in range(20)]
+     #         City,              Node Id
+     NAMES = ['Arad',             # 1
              'Bucharest',         # 2
              'Craiova',           # 3
              'Drobeta',           # 4
@@ -22,8 +22,8 @@ class Romanian_Map:
              'Vaslui',            # 19
              'Zerind']            # 20
 
-    # Straight Line Distance (SLD) to Bucharest
-    INFORMED_Heur = [366,  # Arad
+     # Straight Line Distance (SLD) to Bucharest
+     SLD_Heuristic = [366,  # Arad
                      0,    # Bucharest
                      160,  # Craiova
                      242,  # Drobeta
@@ -43,9 +43,28 @@ class Romanian_Map:
                      80,   # Urziceni
                      199,  # Vaslui
                      374]  # Zerind
-
-    # Adjacency matrix
-    ADJ_MAT = [
+     NODES_AWAY_Heuristic = [3, #Arad
+                   0, #Bucharest
+                   2, #Craiova
+                   3, #Drobeta
+                   3, #Eforie
+                   1, #Fagaras
+                   1, #Giurgiu
+                   2, #Hirsova
+                   3, #Iasi
+                   5, #Lugoj
+                   4, #Mehadia
+                   4, #Neamt
+                   3, #Oradea
+                   1, #Pitesti
+                   2, #Rimnicu Vilcea
+                   2, #Sibiu
+                   4, #Timisoara
+                   1, #Urziceni
+                   2, #Vaslui
+                   4] #Zerind
+     # Adjacency matrix
+     ADJ_MAT = [
     [[17,118], [16,140],[20,75]],        # Arad [neighbor node, weight/cost of path]
     [[6,211],[7,90],[14,101],[18,85]],   # Bucharest
     [[4,120],[14,138],[15,146]],         # Craiova
