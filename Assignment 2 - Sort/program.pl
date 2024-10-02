@@ -44,9 +44,9 @@ mergeSort([], []). % The empty list is sorted
 mergeSort([X], [X]):-!.
 mergeSort(L, SL):-
     split_in_half(L, L1, L2),
-    mergeSort(L1, FILLINHERE),
+    mergeSort(L1, S1),
     mergeSort(L2, S2),
-    merge(S1, FILLINHERE, SL).
+    merge(S1, S2, SL).
 
 /* Comment to describe split_in_half...*/
 intDiv(N,N1, R):- R is div(N,N1).
@@ -55,18 +55,18 @@ split_in_half([X],[],[X]).
 split_in_half(L, L1, L2):-
     length(L,N),
     intDiv(N,2,N1),
-    length(L1, FILLINHERE),
+    length(L1, N1),
     append(L1, L2, L).
 
 /* Comment describing merge(S1, S2, S) */
 merge([], L, L). % comment
 merge(L, [],L). % comment
-merge([H1|T1],[H2|T2],[H1| FILLINHERE]):-
-    H1 FILLINHERE H2,
+merge([H1|T1],[H2|T2],[H1|T]):- 
+    H1 =< H2,
     merge(T1,[H2|T2],T).
 merge([H1|T1], [H2|T2], [H2|T]):-
-    FILLINHERE =< FILLINHERE
-    merge([H1|T1], T2, FILLINHERE).
+    H1 > H2, 
+    merge([H1|T1], T2, T).
 
 /* Comment describing split for quickSort */
 split(_, [],[],[]).
