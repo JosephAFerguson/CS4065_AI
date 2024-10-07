@@ -152,3 +152,89 @@ hybridSort(LIST, SMALLALG, BIGALG, THRESHOLD, SLIST):-
 hybridSort(LIST, SMALLALG, BIGALG, THRESHOLD, SLIST):-
     length(LIST, N), N > THRESHOLD,
     call(BIGALG,LIST,SLIST). %BIGALG is called and used to find the sorted list when the list is above our threshold size
+
+
+/* Execution of tests*/
+/*
+Results on 50 Lists sizes 10-100:
+    bubbleSort: Fails, stalls indefinitely,
+    insertionSort: 5.26 seconds
+    mergeSort: 0.0003125 seconds
+    quickSort: 0.0 seconds
+*/
+/*
+Results on 50 Lists sizes 100-1000:
+    bubbleSort: Fails, stalls indefinitely,
+    insertionSort: 5.26 seconds
+    mergeSort: 0.0003125 seconds
+    quickSort: 0.0 seconds
+*/
+/*
+Results on 50 Lists sizes 1000-10000:
+    bubbleSort: Untested, stalls
+    insertionSort: Untested, stalls
+    mergeSort: 0.0009375 seconds
+    quickSort: 0.0009374 seconds
+*/
+
+:- dynamic random_list/2.  % Declares that random_list/2 will be dynamic.
+
+listsGeneration(0).
+listsGeneration(N) :-
+    N > 0,
+    random(10, 50, ListSize), 
+    randomList(ListSize, List), 
+    assertz(random_list(N, List)),  % Store the list
+    N1 is N - 1,
+    listsGeneration(N1).
+
+hybridSort1(LIST, SLIST) :-
+    hybridSort(LIST, insertionSort, quickSort, 200, SLIST).
+hybridSort2(LIST, SLIST) :-
+    hybridSort(LIST, bubbleSort, mergeSort, 200, SLIST).
+hybridSort3(LIST, SLIST) :-
+    hybridSort(LIST, insertionSort, mergeSort, 200, SLIST).
+hybridSort4(LIST, SLIST) :-
+    hybridSort(LIST, bubbleSort, quickSort, 200, SLIST).
+
+timeAlg(SORTALG, LIST, T) :-
+    statistics(cputime, T0),
+    call(SORTALG, LIST, SL),
+    statistics(cputime, T1),
+    T is T1 - T0,
+    format('~w CPU time: ~w~n', [SORTALG, T]),
+    flush_output. % Output time taken
+
+:- dynamic sorting_times/3.  % Stores (ListNum, SortingAlgorithm, Time).
+
+run_sorts(ListNum, List) :-
+    writeln('Running sorts for list number':ListNum),
+    timeAlg(bubbleSort, List, TimeBubble),
+    assertz(sorting_times(ListNum, bubbleSort, TimeBubble)),
+    timeAlg(insertionSort, List, TimeInsert),
+    assertz(sorting_times(ListNum, insertionSort, TimeInsert)),
+    timeAlg(mergeSort, List, TimeMerge),
+    assertz(sorting_times(ListNum, mergeSort, TimeMerge)),
+    timeAlg(quickSort, List, TimeQuick),
+    assertz(sorting_times(ListNum, quickSort, TimeQuick)),
+    timeAlg(hybridSort1, List, TimeHybrid1),
+    assertz(sorting_times(ListNum, hybridSort1, TimeHybrid1)),
+    %timeAlg(hybridSort2, List, TimeHybrid2),
+    %assertz(sorting_times(ListNum, hybridSort2, TimeHybrid2)),
+    timeAlg(hybridSort3, List, TimeHybrid3),
+    assertz(sorting_times(ListNum, hybridSort3, TimeHybrid3)).
+    %timeAlg(hybridSort4, List, TimeHybrid4),
+    %assertz(sorting_times(ListNum, hybridSort4, TimeHybrid4)),
+
+average_time(SortAlg, AvgTime) :-
+    findall(Time, sorting_times(_, SortAlg, Time), Times),
+    sumlist(Times, TotalTime),
+    length(Times, Count),
+    AvgTime is TotalTime / Count.
+
+run_prog :-
+    forall(random_list(ListNum, List),
+           run_sorts(ListNum, List)).
+
+
+/*END EXECUTION OF TESTS | START OF ALGORITHMS*/
