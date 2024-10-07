@@ -1,3 +1,15 @@
+/*Random List generates a random list of N elements
+ *by prepending elements onto a list until there is only one
+ *element left to add, the last element
+ */
+randomList(1, [X]):-
+    random(0,999,X).
+randomList(N, [X | LIST]):-
+    N > 1,
+    N1 is N - 1, %decrement
+    random(0,999,X),
+    randomList(N1, LIST).
+    
 /*swap the first two elements if they are not in order*/
 swap([X, Y|T], [Y, X | T]):-
     Y =< X.
@@ -94,5 +106,3 @@ hybridSort(LIST, SMALLALG, BIGALG, THRESHOLD, SLIST):-
 hybridSort(LIST, SMALLALG, BIGALG, THRESHOLD, SLIST):-
     length(LIST, N), N > THRESHOLD,
     call(BIGALG,LIST,SLIST). % Comment: fill in the behavior of BIGALG
-
-%add randomList here
